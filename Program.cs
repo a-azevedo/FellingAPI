@@ -1,6 +1,9 @@
+using Microsoft.EntityFrameworkCore;
+using FellingAPI.Context;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<SentimentoDB>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Url")));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
